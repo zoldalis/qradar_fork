@@ -216,3 +216,4 @@ class MobsHandler {
     }
 
 }
+module.exports = MobsHandler;

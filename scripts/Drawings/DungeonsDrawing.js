@@ -1,4 +1,5 @@
-export class DungeonsDrawing extends DrawingUtils {
+let DrawingUtils = require('../Utils/DrawingUtils.js');
+class DungeonsDrawing extends DrawingUtils {
 
 
     constructor(Settings) {
@@ -71,3 +72,4 @@ export class DungeonsDrawing extends DrawingUtils {
     }
 
 }
+module.exports = DungeonsDrawing;

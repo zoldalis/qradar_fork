@@ -1,4 +1,5 @@
-export class PlayersDrawing extends DrawingUtils  {
+let DrawingUtils = require('../Utils/DrawingUtils.js');
+class PlayersDrawing extends DrawingUtils  {
 
 
     constructor(Settings) {
@@ -220,3 +221,4 @@ export class PlayersDrawing extends DrawingUtils  {
     }
     
 }
+module.exports = PlayersDrawing;

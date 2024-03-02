@@ -1,10 +1,10 @@
 ﻿class Harvestable {
     constructor(id, type, tier, posX, posY, charges, size) {
-        this.id = id;
-        this.type = type;
+        this.id = id; // identificator
+        this.type = type; // ore,hide,
         this.tier = tier;
-        this.posX = posX;
-        this.posY = posY;
+        this.posX = posX; //x
+        this.posY = posY; //y
         this.hX = 0;
         this.hY = 0;
 
@@ -150,3 +150,4 @@ class HarvestablesHandler {
 
     }
 }
+module.exports = HarvestablesHandler;

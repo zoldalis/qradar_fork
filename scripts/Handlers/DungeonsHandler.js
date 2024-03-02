@@ -62,3 +62,4 @@ class DungeonsHandler {
 
 
 }
+module.exports = DungeonsHandler;

@@ -42,3 +42,4 @@ class ChestsHandler {
     }
   
 }
+module.exports = ChestsHandler;

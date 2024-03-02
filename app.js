@@ -1,5 +1,4 @@
-﻿
-const express = require('express');
+﻿const express = require('express');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const mysql = require('mysql');
@@ -11,10 +10,6 @@ var Cap = require('cap').Cap;
 var decoders = require('cap').decoders;
 const WebSocket = require('ws');
 const ip = require('ip');
-
-
-
-
 
 const app = express();
 
@@ -89,6 +84,7 @@ app.listen(port, () => {
 
 
 
+
 const getActiveIP = () => {
   const interfaces = ip.address();
   return interfaces;
@@ -153,6 +149,39 @@ c.on('packet', function(nbytes, trunc) {
 });
 
 
+var utils = require('./scripts/Utils/Utils.js')
+
+utils.runUtilsWS();
+
+//grpc
+const grpc = require('@grpc/grpc-js');
+const protoLoader = require('@grpc/proto-loader');
+const packageDefinition = protoLoader.loadSync('../../proto/coord_service.proto');
+const grpcObject = grpc.loadPackageDefinition(packageDefinition);
+const { CoordService } = grpcObject.grpcdemo;
+//
+
+function getCurrentCoords(call, callback) {
+  const response = {
+      coords: JSON.stringify(utils.harvestablesHandler.harvestableList)
+  };
+  callback(null, response);
+}
+
+function bind_grpc() {
+  const server = new grpc.Server();
+  server.addService(CoordService.service, { GetCurrentCoords: getCurrentCoords });
+  server.bindAsync('0.0.0.0:50051', grpc.ServerCredentials.createInsecure(), (err, port) => {
+      if (err) {
+          console.error('Server bind failed:', err);
+      } else {
+          console.log('Server bind successful, port:', port);
+          server.start();
+      }
+  });
+}
+
+bind_grpc()
 
 
 
