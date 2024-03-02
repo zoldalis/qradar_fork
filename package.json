@@ -4,17 +4,22 @@
   "description": "",
   "main": "app.js",
   "pkg": {
-    "scripts": ["scripts/**/*.js"],
-    "assets": ["views/**/*" ]
-
+    "scripts": [
+      "scripts/**/*.js"
+    ],
+    "assets": [
+      "views/**/*"
+    ]
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-	"build": "nexe -b app.js --resource \"views/**/*\" --resource \"scripts/**/*\" --verbose"
+    "build": "nexe -b app.js --resource \"views/**/*\" --resource \"scripts/**/*\" --verbose"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@grpc/grpc-js": "^1.10.1",
+    "@grpc/proto-loader": "^0.7.10",
     "buffercursor": "^0.0.12",
     "cap": "^0.2.1",
     "dotenv": "^16.3.1",
@@ -28,7 +33,7 @@
     "node-sass": "^9.0.0",
     "npm": "^10.2.3",
     "path": "^0.12.7",
+    "protobufjs": "^7.2.6",
     "ws": "^8.14.2"
   }
-  
 }
